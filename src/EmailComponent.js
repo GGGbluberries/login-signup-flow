@@ -27,7 +27,6 @@ class EmailComponent {
     
     async sendEmail(to, root, token) {
         const url = urlOf(root, token)
-        // const htmlToSend = this.loadTemplate(emailFileOf(root), { url: url })
         const htmlToSend = this.loadTemplate(emailFileOf(root), { url: url })
     
         const mailToSend = {

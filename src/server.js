@@ -17,7 +17,6 @@ const {
 
 
 const app = new express()
-// const usersComponent = new UsersComponent("./state.json")
 const usersComponent = new UsersComponent({
     host: configs.DB_HOST,
     user: configs.DB_USER,
@@ -41,9 +40,6 @@ app.get("/login", (req, res) => {
 })
 
 app.post("/login", async (req, res) => {
-    console.log("BODY:", req.body)
-    // const hashedPassword = await hashPassword(req.body.password)
-    console.log(req.body.email, req.body.password)
     const result = await usersComponent.login(req.body.email, req.body.password)
     
     if (result.success) {
@@ -62,8 +58,6 @@ app.post("/signup", async (req, res) => {
     const result = await usersComponent.create(req.body)
     if (result.success) {
         const user = await result.user
-        console.log(user)
-        console.log("first mail: ", user.email)
         await usersComponent.setToken(user.email)
         const userReloaded = await usersComponent.getUser(user.email)
         emailComponent.sendEmail(user.email, "verify-email", userReloaded.token)
@@ -82,27 +76,12 @@ app.get('/signup-confirmation', async (req, res) => {
 })
 
 app.get('/verify-email', async (req, res) => {
-    // const identification = req.query.token
-    // const idDecoded = jwt.verify(identification, configs.JWT_SECRET) 
-    // const email = idDecoded.email
-    // console.log("saaaaaaaa", email)
-    // const user = await usersComponent.getUser(email)
 
     try {
-        // const token= user.token
-        // const decoded = jwt.verify(token, configs.JWT_SECRET) 
-        // // const email = decoded.email
-        // // const email = req.query
-        // console.log("seeeeeee", token)
-        // console.log("sooooooo", decoded)
-        // const user = await usersComponent.getUser(email)
         const token = req.query.token
         const decoded = jwt.verify(token, configs.JWT_SECRET) 
         const email = decoded.email
         const user = await usersComponent.getUser(email)
-
-        console.log(user)
-        console.log(token)
 
         if (!user) {
             return res.redirect(`/verified-email?status=invalid`)
@@ -129,9 +108,7 @@ app.get('/verify-email', async (req, res) => {
 
         if (email) {   //New token and new mail
             const newToken = jwt.sign({ email }, configs.JWT_SECRET, { expiresIn: '1h' })
-            // usersComponent.setUserToken(email, newToken)
             usersComponent.setToken(email, newToken)
-            console.log("---", user.email)
             emailComponent.sendEmail(email, "verify-email", newToken)
 
             return res.redirect(`/verified-email?status=resent&email=${encodeURIComponent(email)}`)
@@ -147,19 +124,14 @@ app.get("/verified-email", (req, res) => {
 
 app.post("/resend-email", async (req, res) => {
     const { email } = req.body
-    console.log("-", email)
     if (!email) res.status(400).json(emailRequired)
     
     const user = await usersComponent.getUser(email)
-    console.log("--", user)
 
     if (!user) res.status(404).json(notFound)
     if (user.verified) res.status(400).json(alreadyVerified)
     
     successfulResend.user = user
-    // usersComponent.setUserToken(user.email)
-    // ? await usersComponent.setToken(user.email)
-    console.log("---", user.email)
     emailComponent.sendEmail(user.email, "verify-email", user.token)
 
     return res.json(successfulResend)
@@ -177,10 +149,8 @@ app.post('/forgot-password', async (req, res) => {
 
     if (!user || !user?.verified) res.status(400).json(notFound)
     
-    // usersComponent.setUserToken(email)
     usersComponent.setToken(email)
     successfulSend.user = user
-    console.log("---", user.email)
     emailComponent.sendEmail(email, "reset-password", user.token)
 
     return res.json(successfulSend)
@@ -229,5 +199,4 @@ app.post('/reset-password', async (req, res) => {
 
 app.use((req, res) => {res.sendFile(join(__dirname, "../public/html/404.html"))}) //404 endpoint not found
 
-// app.listen(configs.PORT, configs.SITE_URL, () => console.log("server listening on port", configs.PORT))
 app.listen(configs.PORT, () => console.log("server listening on port", configs.PORT))

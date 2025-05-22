@@ -9,9 +9,6 @@ function generateToken(email) {
 
 async function hashPassword(password) {
     const hashedPassword = await bcrypt.hash(password, SR)
-    // const base64HashedPassword = Buffer.from(hashedPassword).toString('base64')
-
-    // return base64HashedPassword
     return hashedPassword
 }
 

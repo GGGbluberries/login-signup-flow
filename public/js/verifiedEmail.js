@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 newEmailButton.addEventListener('click', async (event) => {
     event.preventDefault()
     const email = urlParams.get("email")
-    console.log(email)
 
     if (!email) {
         toastr.error("Email non trovata.")
@@ -51,7 +50,6 @@ newEmailButton.addEventListener('click', async (event) => {
         if (data.success) {
             toastr.success(data.message)
         } else {
-            console.log(data)
             if (data.message === "Email già verificata") {
                 messageElement.textContent = "L'Email era già stata verificata. Torna al login per accedere"
                 newEmailButton.style.display = 'none'

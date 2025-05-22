@@ -24,7 +24,6 @@ loginForm.addEventListener("submit", async function (event) {
 
     const email = loginEmailField.value
     const password = loginPasswordField.value
-    console.log(email, password)
 
     try {
         const response = await fetch("/login", {
@@ -33,15 +32,13 @@ loginForm.addEventListener("submit", async function (event) {
             body: JSON.stringify({ email, password })
         })
 
-        const data = await response.json()//.stringify()
+        const data = await response.json()
 
-        if (data.success) {   //JDJiJDEwJHhFN1RCeS9EWlVoSzlDM2diMW0yOXVEZU9zQzJOc29XWW5CeVpEYjN
+        if (data.success) { 
             sessionStorage.setItem("loggedUserEmail", data.user.email)
             window.location.href = "/welcome"
         } else {
             errorMessage.style.opacity = 1
-            // console.log(data.user.verified, "---", data.user?.verified)
-            console.log(data)
             if (!data.user || data.user?.verified) {
                 errorMessage.textContent = "Wrong email or password"
                 loginPasswordField.classList.add('input-error')
