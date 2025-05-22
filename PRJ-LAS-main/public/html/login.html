@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+  <meta charset="UTF-8">
+  <title>Login - PRJ-LAS</title>
+  <!-- Load jQuery before Toaster -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+  <!-- Toastr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Log in</h1>
+    <form id="loginForm">
+      <p class="error" id="errorMessage">Non verified email</p>
+      <div class="input-wrapper">
+        <input type="email" id="loginEmail" name="email" placeholder="Email" required="required" />
+      </div>
+      <div class="input-wrapper password-container">
+        <input type="password" id="loginPassword" name="password" placeholder="Password" required="required" />
+          <i id="toggleLoginPassword" class="fas fa-eye"></i>
+      </div>
+      <p class="forgotPassword">
+        <a href="forgot-password" id="forgotPasswordLink" >Forgot your password?</a>
+      </p>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have and account yet? <a href="signup">Sign up</a></p>
+  </div>
+  <script src="../js/script.js"></script>
+  <script src="../js/login.js"></script>
+
+</body>
+</html>

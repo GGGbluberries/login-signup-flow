@@ -1,0 +1,244 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  background: url('https://i.ibb.co/R4VcJWKZ/background.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0 10px 0 10px;
+  color: #000000;
+}
+
+h1.error {
+  font-size: 4em;
+  color: #e74c3c;
+}
+
+h1.medium-h1 {
+  font-size: 2em;
+}
+
+h1.small-h1 {
+  font-size: 1.8em;
+}
+
+p {
+  margin: 0;
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: #000000;
+}
+
+p.center-p {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+p.error {
+  color: red;
+  transform: translateY(100%);
+}
+
+a {
+  color: #007ffe;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+a:hover {
+  color: #0061c3;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- CONTAINER GENERALE --- */
+.container {
+  min-width: 300px;
+  max-width: 300px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.container.extended {
+  max-width: 600px;
+}
+
+/* --- HOME PAGE --- */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+h1.home-h1 {
+  font-size: 2em;
+  color: #000000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p.home-p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.a-button {
+  min-width: 120px;
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: #000000;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+  max-height: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.a-button:hover {
+  background-color: #2980b9;
+}
+
+/* --- FORM LOGIN --- */
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  color: #000000;
+
+}
+
+.input-wrapper input {
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  font-size: 1em;
+  background: rgba(0, 0, 0, 0);
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+  color: #555; 
+}
+
+.input-wrapper i {
+  position: absolute;
+  right: 10px;
+  transform: translateY(100%);
+  cursor: pointer;
+  color: #000000;
+}
+
+.input-wrapper i:hover {
+  color: #000000;
+}
+
+.forgotPassword {
+  text-align: left;
+  margin-left: 2px;
+}
+
+button {
+  background-color: #3498db; 
+}
+
+/* --- BUTTONS --- */
+button, .a-button {
+  min-width: 100px;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: #0060c0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover, .a-button:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #2980b9; 
+
+}
+
+/* --- INPUT TEXT, EMAIL, PASSWORD --- */
+input[type="text"], input[type="email"], input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-top: 30px;
+  border: 2px solid #b6b6b6;
+  border-radius: 5px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.2);
+  color: #000000;
+}
+
+.input-error {
+  border: 2px solid red !important;
+}
+
+.input-error:focus {
+  border: 2px solid red !important;
+  outline: none;
+}
+
+#confirmPasswordMessage {
+  color: red;
+  font-size: 0.8em;
+  margin: 0;
+  margin-top: 6px;
+  margin-left: 2px;
+  text-align: left;
+  opacity: 0;
+  /* transform: translateY(-50%); */
+}
+
+#errorMessage{
+  display: inline-block;
+  opacity: 0;
+}
+
+#confirmPasswordMessage i {
+  font-size: 1em;
+}

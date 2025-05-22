@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email verified - PRJ-LAS</title>
+    <!-- Carica jQuery prima di Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="small-h1" id="message">Email verificata</h1>
+        
+        <a href="/welcome" class="a-button" id="welcomeButton">Vai al sito</a>
+
+        <a href="#" class="a-button" style="display: none" id="newEmailButton">Manda una nuova Email</a>
+        <p class="center-p"><a href="/login">Torna al login</a></p>
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/verifiedEmail.js"></script>
+</body>
+</html>
