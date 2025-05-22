@@ -1,6 +1,24 @@
 {
+  "name": "PRJ-LAS",
+  "version": "1.1.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "Riccardo Menozzi",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "mysql2": "^3.14.1"
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

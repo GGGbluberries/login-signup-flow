@@ -1,7 +1,7 @@
 const readline = require("readline");
 const mysql = require("mysql2/promise");
 const bcrypt = require("bcrypt");
-const {hashPassword} = require("./PRJ-LAS-main/src/utils.js")
+const {hashPassword} = require("./src/utils.js")
 
 
 const rl = readline.createInterface({
